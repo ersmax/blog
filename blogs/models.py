@@ -9,8 +9,19 @@ class Blog(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        """Format the output string"""
+        """Format the output string for the blog"""
         return self.name
     
 class BlogPost(models.Model):
-    """Represent a single blog post"""
+    """Represent a single post in the blog"""
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)    # if a blog gets deleted, all the posts will be too
+    
+    title = models.CharField(max_length=500)
+    body = models.TextField()
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        """Format the output string for the post"""
+        if len(self.title) < 80:
+            return self.title
+        return f"{self.title[:80]}..."
