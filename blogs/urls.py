@@ -9,5 +9,6 @@ urlpatterns = [                 # list of urls that can be requested from blogs 
     path('', views.index, name='index'),
     # Page to view all the blogs that have been created
     path('blogs/', views.blogs, name='blogs'),
-    
+    # Page to view an individual blog and its posts
+    path('blog/<int:blog_id>/', views.blog, name='blog'),
 ]

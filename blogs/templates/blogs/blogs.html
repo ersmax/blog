@@ -5,7 +5,7 @@
   <ul>
     {% for blog in blogs %}
       <li>
-          <a href="">{{blog.name}}</a>
+          <a href="{% url 'blogs:blog' blog.id %}">{{blog.name}}</a>
       </li>
     {% empty %}
       <li>No topics have been added.</li>  
