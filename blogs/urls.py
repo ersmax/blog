@@ -7,4 +7,7 @@ app_name = 'blogs'              # namespace of this app
 urlpatterns = [                 # list of urls that can be requested from blogs app
     # Home page
     path('', views.index, name='index'),
+    # Page to view all the blogs that have been created
+    path('blogs/', views.blogs, name='blogs'),
+    
 ]

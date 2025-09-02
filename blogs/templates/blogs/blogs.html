@@ -1,0 +1,14 @@
+{% extends 'blogs/base.html' %}
+
+{% block content %}
+  <p>All Blogs</p>
+  <ul>
+    {% for blog in blogs %}
+      <li>
+          <a href="">{{blog.name}}</a>
+      </li>
+    {% empty %}
+      <li>No topics have been added.</li>  
+    {% endfor %}
+
+{% endblock content %}
