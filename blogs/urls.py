@@ -11,4 +11,8 @@ urlpatterns = [                 # list of urls that can be requested from blogs 
     path('blogs/', views.blogs, name='blogs'),
     # Page to view an individual blog and its posts
     path('blog/<int:blog_id>/', views.blog, name='blog'),
+    
+    # Page to create new blog
+    path('new_blog/', views.new_blog, name='new_blog'),
+    
 ]
