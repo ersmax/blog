@@ -5,8 +5,8 @@ from django.db import models
 # what will be stored in the app
 class Blog(models.Model):
     """A person or organization's blog"""
-    name = models.CharField(max_length=200)
     date_added = models.DateTimeField(auto_now_add=True)
+    name = models.CharField(max_length=200)
 
     def __str__(self):
         """Format the output string for the blog"""

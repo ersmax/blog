@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Blog
-from .forms import BlogForm
+from .forms import BlogForm, BlogPostForm
 
 # Create your views here.
 def index(request):
@@ -36,5 +36,23 @@ def new_blog(request):
     context  = {'form':form}
     return render(request, 'blogs/new_blog.html', context)
 
+def new_post(request, blog_id):
+    """Page to create a new post"""
+    blog = Blog.objects.get(id=blog_id)
+
+    if request.method != 'POST':
+        # No data submitted, hence create a blank entry
+        form = BlogPostForm()
+    else:
+        form = BlogPostForm(data=request.POST)      # pass the data requested by user through request.POST
+        if form.is_valid():
+            new_post = form.save(commit = False)   # do not save yet to db
+            new_post.blog = blog
+            new_post.save()
+            return redirect('blogs:blog', blog_id=blog_id)  # redirect to the specifc blog_id with all its entries
+    
+    # Display a blank form or invalid form in case info is missing
+    context = {'blog': blog, 'form': form}
+    return render(request, 'blogs/new_post.html', context)
 
 

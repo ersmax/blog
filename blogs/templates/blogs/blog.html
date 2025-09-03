@@ -2,11 +2,16 @@
 
 {% block content %}
   <p>Blog: {{blog.name}}</p>
+  <p>Entries:</p>  
+  <p>
+    <a href="{% url 'blogs:new_post' blog.id %}">Add a new entry</a>
+  <p>  
   <ul>
     {% for post in posts %}
       <li>
         <p>{{ post.date_added|date:'M d, Y H:i' }}</p>
-        <p></p>
+        <p>{{ post.title }}</p>
+        <p>{{ post.body|linebreaks }}</p>    {% comment %} long text entries include linebreaks, instead of long uninterrupted text. {% endcomment %}
       </li>
     {% empty %}
       <li>This blog does not have any posts yet.</li>
