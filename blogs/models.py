@@ -22,6 +22,6 @@ class BlogPost(models.Model):
 
     def __str__(self):
         """Format the output string for the post"""
-        if len(self.title) < 80:
+        if len(self.title) < 50:
             return self.title
-        return f"{self.title[:80]}..."
+        return f"{self.title[:50]}..."

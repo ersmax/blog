@@ -12,6 +12,9 @@
         <p>{{ post.date_added|date:'M d, Y H:i' }}</p>
         <p>{{ post.title }}</p>
         <p>{{ post.body|linebreaks }}</p>    {% comment %} long text entries include linebreaks, instead of long uninterrupted text. {% endcomment %}
+        <p>
+          <a href="{% url 'blogs:edit_post' post.id %}">Edit post</a>
+        </p>  
       </li>
     {% empty %}
       <li>This blog does not have any posts yet.</li>

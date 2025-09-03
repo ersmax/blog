@@ -17,5 +17,5 @@ urlpatterns = [                 # list of urls that can be requested from blogs 
     # Page to create a new post
     path('new_post/<int:blog_id>/', views.new_post, name='new_post'),
     # Page for editing a post
-    # path('edit_post/<int:post_id>/', views.edit_post, name='edit_post'),
+    path('edit_post/<int:post_id>/', views.edit_post, name='edit_post'),
 ]
