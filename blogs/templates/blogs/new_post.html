@@ -4,7 +4,7 @@
   <p> 
     <a href="{% url 'blogs:blog' blog.id %}">{{blog.name}}</a>
   </p>  
-  <form action="">
+  <form action="{% url 'blogs:new_post' blog.id %}" method='post'> {% comment %} 1st argument of action tells where to send data: to the function new_post() in views. 2nd argument associate new post to the correct blog {% endcomment %}
     {% csrf_token %}    {% comment %} prevent unauthorized access to server, cross-site request forgery {% endcomment %}
     {{ form.as_div }}
     <button name="submit">Add post</button>
